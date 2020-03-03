@@ -6,12 +6,21 @@
 }
 
 body {
-  background: #fff;
+  background: #f1f2f6;
   font-family: "Source Sans Pro", sans-serif;
-  color: #444;
+  color: #2f3542;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
+  background-image: url("https://i.postimg.cc/50nNqZ3W/cookbook-background.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .container {
@@ -24,19 +33,18 @@ body {
   text-transform: uppercase;
   font-family: "Oswald", sans-serif;
   font-weight: 600;
+  color: #ff4757;
 }
 
 .section-title span {
   text-transform: none;
   font-weight: 400;
-  color: #777777;
+  color: #59657e;
 }
 
 /* Layout */
 .wrapper {
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 10px;
+  margin: 0 0 10px 10px;
 }
 
 .sidebar {
@@ -50,11 +58,17 @@ body {
 }
 
 .sidebar, .posts {
-  background: #fff;
+  background: #f1f2f6;
   margin-right: 10px;
   padding: 40px;
-  border: 1px solid #444;
+  border: 1px solid;
   border-radius: 5px;
+  border-color: #747d8c;
+}
+
+.sidebar-other {
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 
 /* Logo */
@@ -64,6 +78,7 @@ body {
   font-size: 104px;
   line-height: 1;
   text-align: center;
+  color: #2f3542;
 }
 
 /* Lists */
@@ -73,8 +88,23 @@ body {
   padding: 0;
 }
 
+.list a {
+  text-decoration: none;
+  color: #2f3542;
+  transition: 0.2s;
+}
+
+.list a:hover {
+  color: #3742fa;
+}
+
 .list .active {
+  color: #3742fa;
   font-weight: bold;
+}
+
+.list li {
+  margin: 0 20px 10px 0;
 }
 
 .list-horizontal li {
@@ -95,16 +125,63 @@ body {
   display: block;
 }
 
+.post-title {
+  color: #3742fa;
+  font-size: 22px;
+  margin: 0;
+}
+
 .post-author {
   font-style: italic;
+  margin: 0 0 30px 0;
 }
 
 .post-tags {
-  display: -ms-flexbox;
-  display: flex;
+  color: #3742fa;
+  margin-top: 30px;
 }
 
 .post-tags p {
-  margin: 0 10px 0 0;
+  margin: 5px 30px 0 0;
+  display: inline-block;
+}
+
+.post-tags ul {
+  display: inline-block;
+}
+
+/* Media */
+@media (max-width: 768px) {
+  .wrapper {
+    -ms-flex-direction: column;
+        flex-direction: column;
+    margin-left: 0;
+  }
+  .sidebar, .posts {
+    margin: 0 0 10px 0;
+  }
+  .list li {
+    display: inline-block;
+    min-width: 60px;
+  }
+  .sidebar-other {
+    -ms-flex-direction: row;
+        flex-direction: row;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar, .posts {
+    padding: 25px;
+  }
+  .sidebar {
+    text-align: center;
+  }
+  .section-title {
+    margin-top: 0;
+  }
+  .list li {
+    margin: 5px 5px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
