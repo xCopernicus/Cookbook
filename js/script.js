@@ -3,7 +3,7 @@
 function titleClickHandler(event){
   event.preventDefault();
   const clickedElement = this;
-  console.log('Link was clicked')
+  console.log('Link was clicked');
   console.log('clickedElement:', clickedElement);
   console.log(event);
   /* [DONE] remove class 'active' from all article links  */
@@ -30,9 +30,9 @@ function titleClickHandler(event){
 
 function generateTitleLinks(){
 
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  const optArticleSelector = '.post',
+    optTitleSelector = '.post-title',
+    optTitleListSelector = '.titles';
 
   /* [DONE] remove contents of titleList */
 
@@ -85,4 +85,4 @@ const optArticleSelector = '.post',
 
 }
 
-generateTitleLinks()
+generateTitleLinks();
