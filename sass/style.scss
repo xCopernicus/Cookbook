@@ -70,12 +70,13 @@ body {
 }
 
 .sidebar, .posts {
-  background: $color-light;
+  background-color: $color-light;
   margin-right: 10px;
   padding: 40px;
   border: 1px solid;
   border-radius: 5px;
-  border-color: $color-light-border;
+  border-color: $color-light;
+  box-shadow: 0 0 5px $color-light-border;
 }
 
 .sidebar-other {

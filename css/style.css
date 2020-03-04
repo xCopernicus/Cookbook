@@ -58,12 +58,13 @@ body {
 }
 
 .sidebar, .posts {
-  background: #f1f2f6;
+  background-color: #f1f2f6;
   margin-right: 10px;
   padding: 40px;
   border: 1px solid;
   border-radius: 5px;
-  border-color: #747d8c;
+  border-color: #f1f2f6;
+  box-shadow: 0 0 5px #747d8c;
 }
 
 .sidebar-other {

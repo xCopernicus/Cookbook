@@ -107,7 +107,7 @@ function generateTags(){
   /* [DONE] START LOOP: for every article: */
 
   for (let article of articleList){
-    console.log('Article: ', article)
+    console.log('Article: ', article);
 
     /* [DONE] find tags wrapper */
 
@@ -142,7 +142,7 @@ function generateTags(){
 
       html = html + articleTagHTML;
 
-    /* [DONE] END LOOP: for each tag */
+      /* [DONE] END LOOP: for each tag */
 
     }
 
@@ -150,7 +150,7 @@ function generateTags(){
 
     tagWrapper.insertAdjacentHTML('beforeend', html);
 
-  /* [DONE] END LOOP: for every article: */
+    /* [DONE] END LOOP: for every article: */
 
   }
 }
