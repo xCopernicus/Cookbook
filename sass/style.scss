@@ -46,6 +46,7 @@ body {
   font-family: $font-header;
   font-weight: 600;
   color: $color-red;
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -65,7 +66,7 @@ body {
 
 .posts {
   flex: 2 0 0;
-//  position: relative;
+  //position: relative;
 }
 
 .sidebar, .posts {
@@ -98,18 +99,22 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
   a {
     text-decoration: none;
     color: $color-dark;
     transition: 0.2s;
   }
+
   a:hover {
     color: $color-blue;
   }
+
   .active {
     color: $color-blue;
     font-weight: bold;
   }
+
   li {
     margin: 0 20px 10px 0;
   }
@@ -133,14 +138,14 @@ body {
 
 .post {
   display: none;
-//  opacity: 0;
-//  z-index: 0;
-//  position: absolute;
-//  transition: 0.2s;
+  //  opacity: 0;
+  //  z-index: 0;
+  //  position: absolute;
+  //  transition: 0.2s;
   &.active {
     display: block;
-//    opacity: 1;
-//    z-index: 1;
+    //    opacity: 1;
+    //    z-index: 1;
   }
 }
 
@@ -159,10 +164,12 @@ body {
 .post-tags {
   color: $color-blue;
   margin-top: 30px;
+
   p {
     margin: 5px 30px 0 0;
     display: inline-block;
   }
+
   ul {
     display: inline-block;
   }
@@ -171,7 +178,6 @@ body {
 /* Media */
 
 @media (max-width: 768px) {
-
   .wrapper {
     flex-direction: column;
     margin-left: 0;
@@ -193,7 +199,6 @@ body {
 }
 
 @media (max-width: 576px) {
-
   .sidebar, .posts {
     padding: 25px;
   }
