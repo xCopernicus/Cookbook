@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
-
 /* Variables */
 
 @import 'colors.scss';
@@ -172,6 +170,36 @@ body {
   ul {
     display: inline-block;
   }
+}
+
+/* Tags Right Column */
+
+.tag{
+  display: inline;
+  margin: 0;
+  span {
+    display: none;
+  }
+}
+
+.tag-size-1 {
+  font-size: 100%;
+}
+
+.tag-size-2 {
+  font-size: 125%;
+}
+
+.tag-size-3 {
+  font-size: 150%;
+}
+
+.tag-size-4 {
+  font-size: 175%;
+}
+
+.tag-size-5 {
+  font-size: 200%;
 }
 
 /* Media */

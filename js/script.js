@@ -5,7 +5,11 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optActiveLinks = 'a.active[href^="#author-"], a.active[href^="#tag-"]',
+  optActiveLinksSelector = 'a.active[href^="#author-"], a.active[href^="#tag-"]',
+  optTagListSelector = '.list.tags',
+  optCloudClassCount = 4,
+  optCloudClassPrefix = 'tag-size-',
+  //optAuthorsListSelector = '.list.authors',
   articleList = document.querySelectorAll(optArticleSelector);
 
 
@@ -108,10 +112,57 @@ function generateTitleLinks(customSelector = ''){
 }
 
 
+function calculateTagsParams(tags){
+
+  /*let tagsParams = {'max': 0, 'min': 999999};
+
+  for(const tag in tags){
+    tagsParams.max = Math.max(tags[tag], tagsParams.max);
+    tagsParams.min = Math.min(tags[tag], tagsParams.min);
+  }
+
+  return tagsParams;*/
+
+  let tagsParams = [0, 999999];
+
+  for(const tag in tags){
+    tagsParams[0] = Math.max(tags[tag], tagsParams[0]);
+    tagsParams[1] = Math.min(tags[tag], tagsParams[1]);
+  }
+
+  return tagsParams;
+
+}
+
+
+function calculateTagClass(counts, params){
+
+  const classNumber = Math.floor(((counts - params[1]) / (params[0] - params[1])) * optCloudClassCount + 1);
+
+  return optCloudClassPrefix + classNumber;
+
+  /* const range = (params[0] - params[1])/5;
+  let classNumber = 3;
+
+  if (counts < range) {
+    classNumber = 1;
+  } else if (counts < 2 * range) {
+    classNumber = 2;
+  } else if (counts < 3 * range) {
+    classNumber = 3;
+  } else if (counts < 4 * range) {
+    classNumber = 4;
+  } else if (counts < 5 * range) {
+    classNumber = 5;
+  }*/
+
+  return optCloudClassPrefix + classNumber;
+}
+
+
 function generateTags(){
-  /* [DONE] find all articles */
 
-
+  let allTags = {};
 
   /* [DONE] START LOOP: for every article: */
 
@@ -150,6 +201,14 @@ function generateTags(){
 
       html = html + articleTagHTML;
 
+
+      if(!allTags.hasOwnProperty(articleTag)){
+        allTags[articleTag] = 1;
+      } else {
+        allTags[articleTag]++;
+      }
+      console.log('All tags: ', allTags);
+
       /* [DONE] END LOOP: for each tag */
 
     }
@@ -162,6 +221,24 @@ function generateTags(){
 
   }
 
+  const tagList = document.querySelector(optTagListSelector);
+
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('Tags params: ', tagsParams);
+
+  let allTagsHTML = '';
+
+  for (let tag in allTags){
+
+
+    allTagsHTML += '<li class="tag ' + calculateTagClass(allTags[tag], tagsParams) + '"><a href="#tag-' + tag + '">' + tag + '</a> <span>(' + allTags[tag] + ')</span></li>';
+
+    //allTagsHTML += tag.replace('</li>', ' <span>(' + allTags[tag] + ')</span></li>');
+  }
+
+  console.log('All Tags HTML: ', allTagsHTML);
+
+  tagList.innerHTML = allTagsHTML;
 }
 
 
@@ -186,7 +263,7 @@ function tagClickHandler(event){
 
   /* find all tag links with class active */
 
-  const tagLinksActive = document.querySelectorAll(optActiveLinks);
+  const tagLinksActive = document.querySelectorAll(optActiveLinksSelector);
   console.log('Tag Links Active: ', tagLinksActive);
 
   /* START LOOP: for each active tag link */
@@ -270,7 +347,7 @@ function authorClickHandler(event){
 
   const author = href.replace('#author-', '');
 
-  const authorLinksActive = document.querySelectorAll(optActiveLinks);
+  const authorLinksActive = document.querySelectorAll(optActiveLinksSelector);
 
   for (const authorLinkActive of authorLinksActive){
     authorLinkActive.classList.remove('active');
