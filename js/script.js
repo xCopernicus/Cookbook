@@ -139,8 +139,6 @@ function calculateTagClass(counts, params){
 
   const classNumber = Math.floor(((counts - params[1]) / (params[0] - params[1])) * optCloudClassCount + 1);
 
-  return optCloudClassPrefix + classNumber;
-
   /* const range = (params[0] - params[1])/5;
   let classNumber = 3;
 
@@ -202,7 +200,7 @@ function generateTags(){
       html = html + articleTagHTML;
 
 
-      if(!allTags.hasOwnProperty(articleTag)){
+      if(!Object.prototype.hasOwnProperty.call(allTags, articleTag)) {
         allTags[articleTag] = 1;
       } else {
         allTags[articleTag]++;
