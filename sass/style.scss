@@ -2,15 +2,8 @@
 
 /* Variables */
 
-$color-light: #f1f2f6;
-$color-light-border: #747d8c;
-$color-dark: #2f3542;
-$color-red: #ff4757;
-$color-blue: #3742fa;
-
-$font-logo: 'Sacramento', cursive;
-$font-header: 'Oswald', sans-serif;
-$font-text: 'Source Sans Pro', sans-serif;
+@import 'colors.scss';
+@import 'fonts.scss';
 
 /* Global */
 

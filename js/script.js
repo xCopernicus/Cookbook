@@ -5,6 +5,7 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
+  optActiveLinks = 'a.active[href^="#author-"], a.active[href^="#tag-"]',
   articleList = document.querySelectorAll(optArticleSelector);
 
 
@@ -19,7 +20,7 @@ function titleClickHandler(event){
   /* [DONE] remove class 'active' from all article links  */
 
   const activeLinks = document.querySelectorAll('.titles a.active');
-  for(let activeLink of activeLinks){
+  for(const activeLink of activeLinks){
     activeLink.classList.remove('active');
   }
 
@@ -30,7 +31,7 @@ function titleClickHandler(event){
   /* [DONE] remove class 'active' from all articles */
 
   const activeArticles = document.querySelectorAll('.posts article.active');
-  for(let activeArticle of activeArticles){
+  for(const activeArticle of activeArticles){
     activeArticle.classList.remove('active');
   }
   /* [DONE] get 'href' attribute from the clicked link */
@@ -137,12 +138,12 @@ function generateTags(){
 
     /* [DONE] START LOOP: for each tag */
 
-    for (let articleTag of articleTagsArray){
+    for (const articleTag of articleTagsArray){
       console.log('Tag: ', articleTag);
 
       /* [DONE] generate HTML of the link */
 
-      let articleTagHTML = '<li><a href="#tag-' + articleTag + '">' + articleTag + '</a></li>';
+      const articleTagHTML = '<li><a href="#tag-' + articleTag + '">' + articleTag + '</a></li>';
       console.log(articleTagHTML);
 
       /* [DONE] add generated code to html variable */
@@ -185,7 +186,7 @@ function tagClickHandler(event){
 
   /* find all tag links with class active */
 
-  const tagLinksActive = document.querySelectorAll('a.active[href^="#tag-"]');
+  const tagLinksActive = document.querySelectorAll(optActiveLinks);
   console.log('Tag Links Active: ', tagLinksActive);
 
   /* START LOOP: for each active tag link */
@@ -232,7 +233,7 @@ function addClickListenersToTags(){
 
   /* START LOOP: for each link */
 
-  for (let tagLink of tagLinks){
+  for (const tagLink of tagLinks){
 
     /* add tagClickHandler as event listener for that link */
 
@@ -269,7 +270,7 @@ function authorClickHandler(event){
 
   const author = href.replace('#author-', '');
 
-  const authorLinksActive = document.querySelectorAll('a.active[href^="#author-"]');
+  const authorLinksActive = document.querySelectorAll(optActiveLinks);
 
   for (const authorLinkActive of authorLinksActive){
     authorLinkActive.classList.remove('active');
