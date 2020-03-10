@@ -21,6 +21,9 @@ const select = {
     tags: '.post-tags .list',
     author: '.post-author',
     title: '.post-title',
+    articleForAuthor: function(author) {
+      return `article[data-author="${author}"]`;
+    }
   },
   listOf: {
     titles: '.titles',
@@ -219,7 +222,6 @@ function generateTags(){
 
       html = html + articleTagHTML;
 
-
       if(!Object.prototype.hasOwnProperty.call(allTags, articleTag)) {
         allTags[articleTag] = 1;
       } else {
@@ -341,7 +343,7 @@ function addClickListenersToTags(){
 
 function generateAuthors(){
 
-  let allAuthors = {};
+  const allAuthors = {};
 
   for(const article of objs.articleList){
 
@@ -350,11 +352,14 @@ function generateAuthors(){
     const author = article.getAttribute('data-author');
     console.log('Author: ', author);
 
-    if (!Object.prototype.hasOwnProperty.call(allAuthors, author)){
+    const authorArticlesLength = document.querySelectorAll(select.article.articleForAuthor(author)).length;
+    allAuthors[author] = authorArticlesLength;
+
+    /*if (!Object.prototype.hasOwnProperty.call(allAuthors, author)){
       allAuthors[author] = 1;
     } else {
       allAuthors[author]++;
-    }
+    }*/
     console.log('All Authors: ', allAuthors);
 
     authorWrapper.innerHTML = 'by <a href="#author-' + author + '">' + author + '</a>';
