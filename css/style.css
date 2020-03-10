@@ -157,12 +157,12 @@ body {
 }
 
 /* Tags Right Column */
-.tag {
+.list li.tag {
   display: inline;
-  margin: 0;
+  margin: 0 5px;
 }
 
-.tag span {
+.list li.tag span {
   display: none;
 }
 
