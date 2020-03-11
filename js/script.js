@@ -258,22 +258,19 @@ function generateTags(){
   const tagsParams = calculateTagsParams(allTags);
   console.log('Tags params: ', tagsParams);
 
-  let html = '';
+  const allTagsData = {tags: []};
 
-  let allTagsHTML = '';
-
-  for (let tag in allTags){
-
-    const allTagsHTMLData = {tagClass: calculateTagClass(allTags[tag], tagsParams), tag: tag, number: allTags[tag]};
-    html = templates.tagLinkList(allTagsHTMLData);
-    allTagsHTML += html;
-
-    //allTagsHTML += '<li class="tag ' + calculateTagClass(allTags[tag], tagsParams) + '"><a href="#tag-' + tag + '">' + tag + '</a> <span>(' + allTags[tag] + ')</span></li>';
+  for (const tag in allTags){
+    allTagsData.tags.push({
+      tag: tag,
+      numebr: allTags[tag],
+      tagClass: calculateTagClass(allTags[tag], tagsParams)
+    });
   }
 
-  console.log('All Tags HTML: ', allTagsHTML);
+  console.log('All Tags Data: ', allTagsData);
 
-  tagList.innerHTML = allTagsHTML;
+  tagList.innerHTML = templates.tagLinkList(allTagsData);
 }
 
 
@@ -380,17 +377,15 @@ function generateAuthors(){
 
   const authorList = document.querySelector(select.listOf.authors);
 
-  let html = '';
+  let allAuthorsData = {tags: []};
 
   for (const author in allAuthors){
-
-    const allAuthorsHTMLData = {author: author, number: allAuthors[author]};
-    const allAuthorsHTML = templates.authorLinkList(allAuthorsHTMLData);
-    html += allAuthorsHTML;
+    allAuthorsData.tags.push({
+      author: author,
+      number: allAuthors[author]
+    });
   }
-
-  authorList.innerHTML = html;
-
+  authorList.innerHTML = templates.authorLinkList(allAuthorsData);
 }
 
 
