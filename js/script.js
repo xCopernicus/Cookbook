@@ -23,6 +23,9 @@ const select = {
     title: '.post-title',
     articleForAuthor: function(author) {
       return `article[data-author="${author}"]`;
+    },
+    articleForTag: function(articleTag) {
+      return `article[data-tags~="${articleTag}"]`;
     }
   },
   listOf: {
@@ -35,6 +38,10 @@ const select = {
 const objs = {
   articleList: document.querySelectorAll(select.all.articles),
 };
+
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+}
 
 
 function titleClickHandler(event){
@@ -222,11 +229,9 @@ function generateTags(){
 
       html = html + articleTagHTML;
 
-      if(!Object.prototype.hasOwnProperty.call(allTags, articleTag)) {
-        allTags[articleTag] = 1;
-      } else {
-        allTags[articleTag]++;
-      }
+      const tagArticleLenght = document.querySelectorAll(select.article.articleForTag(articleTag)).length;
+      allTags[articleTag] = tagArticleLenght;
+
       console.log('All tags: ', allTags);
 
       /* [DONE] END LOOP: for each tag */
@@ -355,11 +360,6 @@ function generateAuthors(){
     const authorArticlesLength = document.querySelectorAll(select.article.articleForAuthor(author)).length;
     allAuthors[author] = authorArticlesLength;
 
-    /*if (!Object.prototype.hasOwnProperty.call(allAuthors, author)){
-      allAuthors[author] = 1;
-    } else {
-      allAuthors[author]++;
-    }*/
     console.log('All Authors: ', allAuthors);
 
     authorWrapper.innerHTML = 'by <a href="#author-' + author + '">' + author + '</a>';
