@@ -57,12 +57,15 @@ body {
 
 .posts {
   flex: 2 0 0;
-  //position: relative;
+  position: relative;
 }
 
-.sidebar, .posts {
-  background-color: $color-light;
+.posts, .sidebar {
   margin-right: 10px;
+}
+
+.sidebar {
+  background-color: $color-light;
   padding: 40px;
   border: 1px solid;
   border-radius: 5px;
@@ -129,15 +132,25 @@ body {
 /* Post */
 
 .post {
-  display: none;
-  //opacity: 0;
-  //z-index: 0;
-  //position: absolute;
-  //transition: 0.2s;
+  //display: none;
+  background-color: $color-light;
+  padding: 40px;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: $color-light;
+  box-shadow: 0 0 5px $color-light-border;
+  opacity: 0;
+  z-index: 0;
+  position: absolute;
+  transition: 0.2s;
+  top: 0;
+  left: 0;
+  padding: 40px;
+  //transform: translate();
   &.active {
-    display: block;
-    //opacity: 1;
-    //z-index: 1;
+    //display: block;
+    opacity: 1;
+    z-index: 1;
   }
 }
 
